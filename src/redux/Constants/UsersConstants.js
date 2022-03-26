@@ -1,0 +1,15 @@
+export const FETCH_USER_DATA = "FETCH_USER_DATA";
+export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
+export const FETCH_USER_FAIL = "FETCH_USER_FAIL";
+
+export const ADD_USER_DATA = "ADD_USER_DATA";
+export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
+export const ADD_USER_FAIL = "ADD_USER_FAIL";
+
+export const USER_lOGIN = "USER_lOGIN";
+export const USER_lOGIN_SUCCESS = "USER_lOGIN_SUCCESS";
+export const USER_lOGIN_FAIL = "USER_lOGIN_FAIL";
+
+export const DELETE_USER_DATA = "DELETE_USER_DATA";
+export const DELETE_USER_SUCCESS = "DELETE_USER_SUCCESS";
+export const DELETE_USER_FAIL = "DELETE_USER_FAIL";
