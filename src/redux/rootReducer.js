@@ -16,6 +16,7 @@ import {
   deleteRoleReducer,
   editRoleReducer,
   fetchRoleReducer,
+  roleMapWIthUseReducer,
 } from "./Reducers/RoleReducers";
 import {
   addproductReducer,
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   addrole: addRoleReducer,
   deleterole: deleteRoleReducer,
   editrole: editRoleReducer,
+  rolemapwithuser: roleMapWIthUseReducer,
 
   screens: fetchScreenReducer,
   addscreen: addscreenReducer,

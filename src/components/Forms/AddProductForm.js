@@ -37,7 +37,7 @@ function AddProductForm(props) {
   const submitscreendata = (values) => {
     const name = values.name;
     const desc = values.descriptions;
-    const qty = values.quantity;
+    const qty = parseInt(values.quantity);
     const image = values.image;
 
     dispatch(addProduct(name, desc, qty, image, userInfo));

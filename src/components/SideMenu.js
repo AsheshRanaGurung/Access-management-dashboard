@@ -9,9 +9,10 @@ function SideMenu(props) {
     {
       name: "User Settings",
       submenus: [
-        { name: "Create User", to: "/createuser" },
-        { name: "Role Setting", to: "/rolesetting" },
-        { name: "Screen Setup", to: "/screensetup" },
+        { name: "Create User", to: "/createuser", screen: "user-setup" },
+        { name: "Role Setting", to: "/rolesetting", screen: "role-setup" },
+        { name: "Screen Setup", to: "/screensetup", screen: "screen-setup" },
+        { name: "Use Role Map", to: "/userrolesetup", screen: "screen-setup" },
         // { name: "Privilage Setup", to: "/privelagesetup" },
       ],
       iconClassName: "bi bi-gear",
@@ -55,18 +56,22 @@ function SideMenu(props) {
       <div className="main-menu">
         <ul>
           {menuItems.map((menuitem, index) => (
-            <MenuItem
-              key={index}
-              name={menuitem.name}
-              submenus={menuitem.submenus || []}
-              iconClassName={menuitem.iconClassName}
-              onClick={() => {
-                if (inactive) {
-                  setInactive(false);
-                }
-              }}
-              to={menuitem.to}
-            />
+            <>
+              {/* {screen.includes(menuitem.screen) && ( */}
+              <MenuItem
+                key={index}
+                name={menuitem.name}
+                submenus={menuitem.submenus || []}
+                iconClassName={menuitem.iconClassName}
+                onClick={() => {
+                  if (inactive) {
+                    setInactive(false);
+                  }
+                }}
+                to={menuitem.to}
+              />
+              {/* )} */}
+            </>
           ))}
         </ul>
       </div>

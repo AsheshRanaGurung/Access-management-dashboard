@@ -11,6 +11,9 @@ import {
   EDIT_ROLE_DATA,
   EDIT_ROLE_SUCCESS,
   EDIT_ROLE_FAIL,
+  ROLE_MAP_WITH_USER_REQUEST,
+  ROLE_MAP_WITH_USER_SUCCESS,
+  ROLE_MAP_WITH_USER_FAIL,
 } from "../Constants/RoleConstants";
 
 export const fetchRoleReducer = (
@@ -78,6 +81,22 @@ export const editRoleReducer = (state = {}, action) => {
       return { loading: false, success: true };
 
     case EDIT_ROLE_FAIL:
+      return { loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const roleMapWIthUseReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ROLE_MAP_WITH_USER_REQUEST:
+      return { loading: true };
+
+    case ROLE_MAP_WITH_USER_SUCCESS:
+      return { loading: false, success: true };
+
+    case ROLE_MAP_WITH_USER_FAIL:
       return { loading: false, error: action.payload };
 
     default:

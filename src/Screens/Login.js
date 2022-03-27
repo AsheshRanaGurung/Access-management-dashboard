@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const paperStyle = {
@@ -46,11 +47,6 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const submitUserdetail = (values) => {
-    const email = values.email;
-    const pass = values.password;
-    dispatch(userLogin(email, pass));
-  };
 
   return (
     <Grid>
@@ -76,6 +72,7 @@ const Login = () => {
                 "usertoken",
                 JSON.stringify(response.data.data.token)
               );
+              toast("Logged In Successfully");
               navigate("/");
             }
 

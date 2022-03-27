@@ -40,7 +40,7 @@ function UpdateProductForm(props) {
   const submitscreendata = (values) => {
     const name = values.name;
     const desc = values.descriptions;
-    const qty = values.quantity;
+    const qty = parseInt(values.quantity);
     const image = values.image;
 
     dispatch(editproduct(id, name, desc, qty, image, userInfo));
@@ -140,7 +140,7 @@ function UpdateProductForm(props) {
                 disabled={isSubmitting === true}
               >
                 <div className="primary-btn text">
-                  {isSubmitting ? <Spinner /> : "Update Screen"}
+                  {isSubmitting ? <Spinner /> : "Update Product"}
                 </div>
               </button>
             </Form>

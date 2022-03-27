@@ -13,6 +13,9 @@ import {
   DELETE_SCREEN_SUCCESS,
   DELETE_SCREEN_FAIL,
 } from "../Constants/ScreenConstants";
+import { toast } from "react-toastify";
+
+const baseurl = "https://ecom-react-task.herokuapp.com";
 
 export const fetchScreen = (userInfo) => async (dispatch) => {
   try {
@@ -26,7 +29,7 @@ export const fetchScreen = (userInfo) => async (dispatch) => {
         Authorization: `Bearer ${userInfo}`,
       },
     };
-    const url = "https://ecom-react-task.herokuapp.com/screens";
+    const url = `${baseurl}/screens`;
 
     const response = await axios.get(url, config);
 
@@ -58,7 +61,7 @@ export const addscreen = (name, desc, userInfo) => async (dispatch) => {
       },
     };
 
-    const url = "https://ecom-react-task.herokuapp.com/screens";
+    const url = `${baseurl}/screens`;
 
     const { data } = await axios.post(
       url,
@@ -71,6 +74,7 @@ export const addscreen = (name, desc, userInfo) => async (dispatch) => {
       type: SCREEN_ADD_SUCCESS,
       payload: data,
     });
+    toast("Screen added Successfully");
   } catch (error) {
     dispatch({
       type: SCREEN_ADD_FAIL,
@@ -94,7 +98,7 @@ export const deletescreen = (id, userInfo) => async (dispatch) => {
         Authorization: `Bearer ${userInfo}`,
       },
     };
-    const url = `https://ecom-react-task.herokuapp.com/screens/${id}`;
+    const url = `${baseurl}/screens/${id}`;
 
     const { data } = await axios.delete(
       url,
@@ -107,6 +111,7 @@ export const deletescreen = (id, userInfo) => async (dispatch) => {
       type: DELETE_SCREEN_SUCCESS,
       payload: data,
     });
+    toast("Screen deleted Successfully");
   } catch (error) {
     dispatch({
       type: DELETE_SCREEN_FAIL,
@@ -131,7 +136,7 @@ export const editscreen = (id, name, desc, userInfo) => async (dispatch) => {
       },
     };
 
-    const url = `https://ecom-react-task.herokuapp.com/screens/${id}`;
+    const url = `${baseurl}/screens/${id}`;
 
     const { data } = await axios.put(
       url,
@@ -144,6 +149,7 @@ export const editscreen = (id, name, desc, userInfo) => async (dispatch) => {
       type: UPDATE_SCREEN_SUCCESS,
       payload: data,
     });
+    toast("Screen updated Successfully");
   } catch (error) {
     dispatch({
       type: UPDATE_SCREEN_FAIL,

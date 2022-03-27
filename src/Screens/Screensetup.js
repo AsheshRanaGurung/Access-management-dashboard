@@ -41,7 +41,7 @@ const Screensetup = () => {
       Cell: ({ row }) => (
         <>
           <button
-            style={{ color: "blue" }}
+            style={{ color: "blue", paddingRight: "0.75rem" }}
             onClick={() =>
               editThisScreen(
                 row.original.id,
@@ -58,9 +58,9 @@ const Screensetup = () => {
           >
             <i className="bi bi-trash3"></i>
           </button>
-          <button style={{ color: "#green" }} onClick={() => alert("hello")}>
+          {/* <button style={{ color: "#green" }} onClick={() => alert("hello")}>
             <i className="bi bi-gear"></i>
-          </button>
+          </button> */}
         </>
       ),
     },
@@ -71,8 +71,10 @@ const Screensetup = () => {
 
   const addeddscreen = useSelector((state) => state.addscreen);
   const { success: addsuccess } = addeddscreen;
+
   const deletedscreen = useSelector((state) => state.deletescreen);
   const { success: deletesuccess } = deletedscreen;
+
   const updatedscreen = useSelector((state) => state.updatescreen);
   const { success: updatesuccess } = updatedscreen;
 

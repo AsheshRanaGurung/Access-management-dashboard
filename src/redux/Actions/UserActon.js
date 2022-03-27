@@ -13,6 +13,7 @@ import {
   DELETE_USER_FAIL,
 } from "../Constants/UsersConstants";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const userLogin = (email, pass) => async (dispatch) => {
   try {
@@ -100,6 +101,7 @@ export const adduser = (name, email, pass, userInfo) => async (dispatch) => {
       type: ADD_USER_SUCCESS,
       payload: data.data,
     });
+    toast("User added Successfully");
   } catch (error) {
     dispatch({
       type: ADD_USER_FAIL,
@@ -130,6 +132,7 @@ export const deleteuser = (id, userInfo) => async (dispatch) => {
       type: DELETE_USER_SUCCESS,
       payload: data,
     });
+    toast("User deleted Successfully");
   } catch (error) {
     dispatch({
       type: DELETE_USER_FAIL,
@@ -168,6 +171,7 @@ export const edituser =
         type: ADD_USER_SUCCESS,
         payload: data.data,
       });
+      toast("User edited Successfully");
     } catch (error) {
       dispatch({
         type: ADD_USER_FAIL,

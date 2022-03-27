@@ -8,6 +8,9 @@ import {
   EDIT_PRODUCT_DATA,
   EDIT_PRODUCT_SUCCESS,
   EDIT_PRODUCT_FAIL,
+  DELETE_PRODUCT_DATA,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
 } from "../Constants/ProductConstants";
 
 export const fetchProductReducer = (
@@ -52,13 +55,13 @@ export const addproductReducer = (state = {}, action) => {
 
 export const deleteproductReducer = (state = {}, action) => {
   switch (action.type) {
-    case ADD_PRODUCT_DATA:
+    case DELETE_PRODUCT_DATA:
       return { isloading: true };
 
-    case ADD_PRODUCT_SUCCESS:
+    case DELETE_PRODUCT_SUCCESS:
       return { isloading: false, success: true };
 
-    case ADD_PRODUCT_FAIL:
+    case DELETE_PRODUCT_FAIL:
       return { isloading: false, error: action.payload };
 
     default:

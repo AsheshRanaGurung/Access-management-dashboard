@@ -13,6 +13,9 @@ import {
   EDIT_PRODUCT_SUCCESS,
   EDIT_PRODUCT_FAIL,
 } from "../Constants/ProductConstants";
+import { toast } from "react-toastify";
+
+const baseurl = "https://ecom-react-task.herokuapp.com";
 
 export const fetchProduct = (userInfo) => async (dispatch) => {
   try {
@@ -27,7 +30,7 @@ export const fetchProduct = (userInfo) => async (dispatch) => {
       },
     };
 
-    const url = "https://ecom-react-task.herokuapp.com/product";
+    const url = `${baseurl}/product`;
     const response = await axios.get(
       url,
 
@@ -63,14 +66,18 @@ export const addProduct =
         },
       };
 
-      const url = "https://ecom-react-task.herokuapp.com/product";
+      const url = `${baseurl}/product`;
       const response = await axios.post(
         url,
         {
           name: name,
           description: desc,
-          quantity: qty,
           image: img,
+          quantity: qty,
+          // name: "Dell Laptop",
+          // description: "Dell Laptop",
+          // image: "https://betanews.com/wp-content/uploads/2014/11/front.jpg",
+          // quantity: 10,
         },
         config
       );
@@ -79,6 +86,7 @@ export const addProduct =
         type: ADD_PRODUCT_SUCCESS,
         payload: response,
       });
+      toast("Product added Successfully");
     } catch (error) {
       dispatch({
         type: ADD_PRODUCT_FAIL,
@@ -101,12 +109,13 @@ export const deleteproduct = (id, userInfo) => async (dispatch) => {
         Authorization: `Bearer ${userInfo}`,
       },
     };
-    const url = `https://ecom-react-task.herokuapp.com/product/${id}`;
+    const url = `${baseurl}/product/${id}`;
     const data = await axios.delete(url, config);
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
       payload: data,
     });
+    toast("Product deleted Successfully");
   } catch (error) {
     dispatch({
       type: DELETE_PRODUCT_FAIL,
@@ -119,7 +128,7 @@ export const deleteproduct = (id, userInfo) => async (dispatch) => {
 };
 
 export const editproduct =
-  (id, name, desc, img, qty, userInfo) => async (dispatch) => {
+  (id, name, desc, qty, img, userInfo) => async (dispatch) => {
     try {
       dispatch({
         type: EDIT_PRODUCT_DATA,
@@ -131,7 +140,7 @@ export const editproduct =
           Authorization: `Bearer ${userInfo}`,
         },
       };
-      const url = `https://ecom-react-task.herokuapp.com/product/${id}`;
+      const url = `${baseurl}/product/${id}`;
       const data = await axios.put(
         url,
         {
@@ -146,6 +155,7 @@ export const editproduct =
         type: EDIT_PRODUCT_SUCCESS,
         payload: data,
       });
+      toast("Product edited Successfully");
     } catch (error) {
       dispatch({
         type: EDIT_PRODUCT_FAIL,

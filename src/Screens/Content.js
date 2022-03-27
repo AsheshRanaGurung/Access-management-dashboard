@@ -19,7 +19,16 @@ import AddProductModal from "../components/Modals/AddProductModal";
 import UpdateProductModal from "../components/Modals/UpdateProductModal";
 
 function Content() {
-  const products = useSelector((state) => state.products);
+  const product = useSelector((state) => state.products);
+  const { products } = product;
+
+  const editproduct = useSelector((state) => state.editproduct);
+  const { success: editproductsuccess } = editproduct;
+  const deleteproducts = useSelector((state) => state.deleteproducts);
+  const { success: deleteproductssuccess } = deleteproducts;
+  const addproducts = useSelector((state) => state.addproducts);
+  const { success: addproductssuccess } = addproducts;
+
   const [addModal, setAddModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
 
@@ -55,7 +64,7 @@ function Content() {
       Cell: ({ row }) => (
         <>
           <button
-            style={{ color: "blue" }}
+            style={{ color: "blue", paddingRight: "0.75rem" }}
             onClick={() =>
               editThisRole(
                 row.original.id,
@@ -80,7 +89,10 @@ function Content() {
   ];
 
   const columns = useMemo(() => tableColumn, []);
-  const data = useMemo(() => products?.data?.data, [products?.data?.data]);
+  const data = useMemo(
+    () => products[0]?.data?.data,
+    [products[0]?.data?.data]
+  );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
@@ -107,7 +119,8 @@ function Content() {
 
   useEffect(() => {
     dispatch(fetchProduct(userInfo));
-  }, []);
+    // console.log(products[0].data.data);
+  }, [addproductssuccess, editproductsuccess, deleteproductssuccess]);
 
   return (
     <div>
